@@ -8,6 +8,8 @@
 
 #import "DXXcodeConsoleUnicodePlugin.h"
 
+#import "NSAlert+Blocks.h"
+
 static DXXcodeConsoleUnicodePlugin *sharedPlugin;
 
 @interface DXXcodeConsoleUnicodePlugin()
@@ -35,24 +37,67 @@ static DXXcodeConsoleUnicodePlugin *sharedPlugin;
         self.bundle = plugin;
         
         // Create menu items, initialize UI, etc.
-
+        
         // Sample Menu Item:
-        NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"File"];
+        NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
         if (menuItem) {
             [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-            NSMenuItem *actionMenuItem = [[NSMenuItem alloc] initWithTitle:@"Do Action" action:@selector(doMenuAction) keyEquivalent:@""];
-            [actionMenuItem setTarget:self];
-            [[menuItem submenu] addItem:actionMenuItem];
+            
+//            NSMenuItem *copyAndConvertItem = [[NSMenuItem alloc] initWithTitle:@"CopyAndConvertUnicode" action:@selector(copyAndConvertAction) keyEquivalent:@""];
+//            [copyAndConvertItem setTarget:self];
+//            [[menuItem submenu] addItem:copyAndConvertItem];
+            
+            NSMenuItem *convertItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicode" action:@selector(convertAction) keyEquivalent:@"c"];
+            [convertItem setKeyEquivalentModifierMask:NSAlternateKeyMask];
+            [convertItem setTarget:self];
+            [[menuItem submenu] addItem:convertItem];
         }
     }
     return self;
 }
 
 // Sample Action, for menu item:
-- (void)doMenuAction
+- (void)convertAction
 {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Hello, World" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:@""];
+    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+    NSString *str = [self convertUnicode:[pasteboard stringForType:@"public.utf8-plain-text"]];
+//    NSString *str = [NSString stringWithFormat:@"%@", [pasteboard types]];
+    /**
+     *  "dyn.ah62d4rv4gu8y63n2nuuhg5pbsm4ca6dbsr4gnkduqf31k3pcr7u1e3basv61a3k",
+     "NeXT smart paste pasteboard type",
+     "com.apple.webarchive",
+     "Apple Web Archive pasteboard type",
+     "public.rtf",
+     "NeXT Rich Text Format v1.0 pasteboard type",
+     "public.utf8-plain-text",
+     NSStringPboardType,
+     "public.utf16-external-plain-text",
+     "CorePasteboardFlavorType 0x75743136",
+     "dyn.ah62d4rv4gk81n65yru",
+     "CorePasteboardFlavorType 0x7573746C",
+     "com.apple.traditional-mac-plain-text",
+     "CorePasteboardFlavorType 0x54455854",
+     "dyn.ah62d4rv4gk81g7d3ru",
+     "CorePasteboardFlavorType 0x7374796C"
+     */
+    
+//    [pasteboard setString:str forType:NSStringPboardType];
+    
+    NSAlert *alert = [NSAlert alertWithMessageText:@"" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:str, nil];
     [alert runModal];
+}
+
+//- (void)copyAndConvertAction
+//{
+//    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+//}
+
+- (NSString*)convertUnicode:(NSString*)aString
+{
+    NSString *ret = [NSString stringWithCString:[aString cStringUsingEncoding:[aString smallestEncoding]]
+                                       encoding:NSNonLossyASCIIStringEncoding];
+    
+    return ret;
 }
 
 - (void)dealloc

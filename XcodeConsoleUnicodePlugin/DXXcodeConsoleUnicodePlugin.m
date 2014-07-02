@@ -8,7 +8,36 @@
 
 #import "DXXcodeConsoleUnicodePlugin.h"
 
+#import <objc/runtime.h>
+
 static DXXcodeConsoleUnicodePlugin *sharedPlugin;
+
+static IMP IMP_NSTextStorage_fixAttributesInRange = nil;
+
+@implementation XcodeConsoleUnicode_NSTextStorage
+
+- (void)fixAttributesInRange:(NSRange)aRange
+{
+    IMP_NSTextStorage_fixAttributesInRange(self, _cmd, aRange);
+    
+    NSString *rangeString = [[self string] substringWithRange:aRange];
+    
+    NSString *convertStr = [DXXcodeConsoleUnicodePlugin convertUnicode:rangeString];
+    if (![convertStr isEqualToString:rangeString] && convertStr) {
+        
+        NSDictionary *clearAttrs =[NSDictionary dictionaryWithObjectsAndKeys:
+                                   [NSFont systemFontOfSize:0.001], NSFontAttributeName,
+                                   [NSColor clearColor], NSForegroundColorAttributeName, nil];
+        
+		[self addAttributes:clearAttrs range:aRange];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [DXXcodeConsoleUnicodePlugin addStringToConsole:convertStr];
+        });
+    }
+}
+
+@end
 
 @interface DXXcodeConsoleUnicodePlugin()
 
@@ -16,6 +45,45 @@ static DXXcodeConsoleUnicodePlugin *sharedPlugin;
 @end
 
 @implementation DXXcodeConsoleUnicodePlugin
+
+IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationClass, SEL destinationSel)
+{
+	if (!sourceSel || !sourceClass || !destinationClass)
+	{
+		NSLog(@"XcodeColors: Missing parameter to ReplaceInstanceMethod");
+		return nil;
+	}
+	
+	if (!destinationSel)
+		destinationSel = sourceSel;
+	
+	Method sourceMethod = class_getInstanceMethod(sourceClass, sourceSel);
+	if (!sourceMethod)
+	{
+		NSLog(@"XcodeColors: Unable to get sourceMethod");
+		return nil;
+	}
+	
+	IMP prevImplementation = method_getImplementation(sourceMethod);
+	
+	Method destinationMethod = class_getInstanceMethod(destinationClass, destinationSel);
+	if (!destinationMethod)
+	{
+		NSLog(@"XcodeColors: Unable to get destinationMethod");
+		return nil;
+	}
+	
+	IMP newImplementation = method_getImplementation(destinationMethod);
+	if (!newImplementation)
+	{
+		NSLog(@"XcodeColors: Unable to get newImplementation");
+		return nil;
+	}
+	
+	method_setImplementation(sourceMethod, newImplementation);
+	
+	return prevImplementation;
+}
 
 + (void)pluginDidLoad:(NSBundle *)plugin
 {
@@ -50,6 +118,9 @@ static DXXcodeConsoleUnicodePlugin *sharedPlugin;
             [convertItem setTarget:self];
             [[menuItem submenu] addItem:convertItem];
         }
+        
+        IMP_NSTextStorage_fixAttributesInRange = ReplaceInstanceMethod([NSTextStorage class], @selector(fixAttributesInRange:),
+                                                                       [XcodeConsoleUnicode_NSTextStorage class], @selector(fixAttributesInRange:));
     }
     return self;
 }
@@ -58,7 +129,7 @@ static DXXcodeConsoleUnicodePlugin *sharedPlugin;
 - (void)convertAction
 {
     NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-    NSString *str = [self convertUnicode:[pasteboard stringForType:@"public.utf8-plain-text"]];
+    NSString *str = [DXXcodeConsoleUnicodePlugin convertUnicode:[pasteboard stringForType:@"public.utf8-plain-text"]];
 //    NSString *str = [NSString stringWithFormat:@"%@", [pasteboard types]];
     /**
      *  "dyn.ah62d4rv4gu8y63n2nuuhg5pbsm4ca6dbsr4gnkduqf31k3pcr7u1e3basv61a3k",
@@ -90,12 +161,37 @@ static DXXcodeConsoleUnicodePlugin *sharedPlugin;
 //    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
 //}
 
-- (NSString*)convertUnicode:(NSString*)aString
++ (NSString*)convertUnicode:(NSString*)aString
 {
     NSString *ret = [NSString stringWithCString:[aString cStringUsingEncoding:[aString smallestEncoding]]
                                        encoding:NSNonLossyASCIIStringEncoding];
     
     return ret;
+}
+
++ (void)addStringToConsole:(NSString*)aString
+{
+    for (NSWindow *window in [NSApp windows]) {
+        NSView *contentView = window.contentView;
+        IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
+        [console insertText:aString];
+        break;
+    }
+}
+
++ (IDEConsoleTextView *)consoleViewInMainView:(NSView *)mainView
+{
+    for (NSView *childView in mainView.subviews) {
+        if ([childView isKindOfClass:NSClassFromString(@"IDEConsoleTextView")]) {
+            return (IDEConsoleTextView *)childView;
+        } else {
+            NSView *v = [self consoleViewInMainView:childView];
+            if ([v isKindOfClass:NSClassFromString(@"IDEConsoleTextView")]) {
+                return (IDEConsoleTextView *)v;
+            }
+        }
+    }
+    return nil;
 }
 
 - (void)dealloc

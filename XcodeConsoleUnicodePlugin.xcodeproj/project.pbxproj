@@ -14,6 +14,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D537BEA01963CDFE009CB6DA /* DVTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFoundation.h; sourceTree = "<group>"; };
+		D537BEA11963CDFE009CB6DA /* DVTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTKit.h; sourceTree = "<group>"; };
+		D537BEA21963CDFE009CB6DA /* IDEFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEFoundation.h; sourceTree = "<group>"; };
+		D537BEA31963CDFE009CB6DA /* IDEKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEKit.h; sourceTree = "<group>"; };
+		D537BEA41963CDFE009CB6DA /* IDESourceEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDESourceEditor.h; sourceTree = "<group>"; };
 		D5E9C67219639F6C00115F7C /* XcodeConsoleUnicodePlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeConsoleUnicodePlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5E9C67519639F6C00115F7C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D5E9C67719639F6C00115F7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -37,6 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D537BE9F1963CDFE009CB6DA /* XcodeClasses */ = {
+			isa = PBXGroup;
+			children = (
+				D537BEA01963CDFE009CB6DA /* DVTFoundation.h */,
+				D537BEA11963CDFE009CB6DA /* DVTKit.h */,
+				D537BEA21963CDFE009CB6DA /* IDEFoundation.h */,
+				D537BEA31963CDFE009CB6DA /* IDEKit.h */,
+				D537BEA41963CDFE009CB6DA /* IDESourceEditor.h */,
+			);
+			path = XcodeClasses;
+			sourceTree = "<group>";
+		};
 		D5E9C66919639F6C00115F7C = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +83,7 @@
 		D5E9C67919639F6C00115F7C /* XcodeConsoleUnicodePlugin */ = {
 			isa = PBXGroup;
 			children = (
+				D537BE9F1963CDFE009CB6DA /* XcodeClasses */,
 				D5E9C67F19639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.h */,
 				D5E9C68019639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m */,
 				D5E9C67A19639F6C00115F7C /* Supporting Files */,

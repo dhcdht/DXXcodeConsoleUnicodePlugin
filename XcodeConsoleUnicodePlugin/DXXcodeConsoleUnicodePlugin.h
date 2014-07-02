@@ -8,6 +8,17 @@
 
 #import <AppKit/AppKit.h>
 
+#import "IDEKit.h"
+
+@interface XcodeConsoleUnicode_NSTextStorage : NSTextStorage
+
+- (void)fixAttributesInRange:(NSRange)aRange;
+
+@end
+
 @interface DXXcodeConsoleUnicodePlugin : NSObject
+
++ (NSString*)convertUnicode:(NSString*)aString;
++ (void)addStringToConsole:(NSString*)aString;
 
 @end

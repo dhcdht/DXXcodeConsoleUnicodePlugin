@@ -8,8 +8,6 @@
 
 #import "DXXcodeConsoleUnicodePlugin.h"
 
-#import "NSAlert+Blocks.h"
-
 static DXXcodeConsoleUnicodePlugin *sharedPlugin;
 
 @interface DXXcodeConsoleUnicodePlugin()

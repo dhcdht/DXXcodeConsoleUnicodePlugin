@@ -1,0 +1,290 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D5E9C67619639F6C00115F7C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E9C67519639F6C00115F7C /* AppKit.framework */; };
+		D5E9C67819639F6C00115F7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E9C67719639F6C00115F7C /* Foundation.framework */; };
+		D5E9C67E19639F6C00115F7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5E9C67C19639F6C00115F7C /* InfoPlist.strings */; };
+		D5E9C68119639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = D5E9C68019639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D5E9C67219639F6C00115F7C /* XcodeConsoleUnicodePlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeConsoleUnicodePlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5E9C67519639F6C00115F7C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D5E9C67719639F6C00115F7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D5E9C67B19639F6C00115F7C /* XcodeConsoleUnicodePlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XcodeConsoleUnicodePlugin-Info.plist"; sourceTree = "<group>"; };
+		D5E9C67D19639F6C00115F7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D5E9C67F19639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DXXcodeConsoleUnicodePlugin.h; sourceTree = "<group>"; };
+		D5E9C68019639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DXXcodeConsoleUnicodePlugin.m; sourceTree = "<group>"; };
+		D5E9C68219639F6C00115F7C /* XcodeConsoleUnicodePlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XcodeConsoleUnicodePlugin-Prefix.pch"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D5E9C66F19639F6C00115F7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5E9C67619639F6C00115F7C /* AppKit.framework in Frameworks */,
+				D5E9C67819639F6C00115F7C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D5E9C66919639F6C00115F7C = {
+			isa = PBXGroup;
+			children = (
+				D5E9C67919639F6C00115F7C /* XcodeConsoleUnicodePlugin */,
+				D5E9C67419639F6C00115F7C /* Frameworks */,
+				D5E9C67319639F6C00115F7C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D5E9C67319639F6C00115F7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5E9C67219639F6C00115F7C /* XcodeConsoleUnicodePlugin.xcplugin */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D5E9C67419639F6C00115F7C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D5E9C67519639F6C00115F7C /* AppKit.framework */,
+				D5E9C67719639F6C00115F7C /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D5E9C67919639F6C00115F7C /* XcodeConsoleUnicodePlugin */ = {
+			isa = PBXGroup;
+			children = (
+				D5E9C67F19639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.h */,
+				D5E9C68019639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m */,
+				D5E9C67A19639F6C00115F7C /* Supporting Files */,
+			);
+			path = XcodeConsoleUnicodePlugin;
+			sourceTree = "<group>";
+		};
+		D5E9C67A19639F6C00115F7C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D5E9C67B19639F6C00115F7C /* XcodeConsoleUnicodePlugin-Info.plist */,
+				D5E9C67C19639F6C00115F7C /* InfoPlist.strings */,
+				D5E9C68219639F6C00115F7C /* XcodeConsoleUnicodePlugin-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D5E9C67119639F6C00115F7C /* XcodeConsoleUnicodePlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D5E9C68519639F6C00115F7C /* Build configuration list for PBXNativeTarget "XcodeConsoleUnicodePlugin" */;
+			buildPhases = (
+				D5E9C66E19639F6C00115F7C /* Sources */,
+				D5E9C66F19639F6C00115F7C /* Frameworks */,
+				D5E9C67019639F6C00115F7C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XcodeConsoleUnicodePlugin;
+			productName = XcodeConsoleUnicodePlugin;
+			productReference = D5E9C67219639F6C00115F7C /* XcodeConsoleUnicodePlugin.xcplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D5E9C66A19639F6C00115F7C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DX;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = dhcdht;
+			};
+			buildConfigurationList = D5E9C66D19639F6C00115F7C /* Build configuration list for PBXProject "XcodeConsoleUnicodePlugin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D5E9C66919639F6C00115F7C;
+			productRefGroup = D5E9C67319639F6C00115F7C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D5E9C67119639F6C00115F7C /* XcodeConsoleUnicodePlugin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D5E9C67019639F6C00115F7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5E9C67E19639F6C00115F7C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D5E9C66E19639F6C00115F7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5E9C68119639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D5E9C67C19639F6C00115F7C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5E9C67D19639F6C00115F7C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D5E9C68319639F6C00115F7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D5E9C68419639F6C00115F7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D5E9C68619639F6C00115F7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XcodeConsoleUnicodePlugin/XcodeConsoleUnicodePlugin-Prefix.pch";
+				INFOPLIST_FILE = "XcodeConsoleUnicodePlugin/XcodeConsoleUnicodePlugin-Info.plist";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Debug;
+		};
+		D5E9C68719639F6C00115F7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(HOME)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XcodeConsoleUnicodePlugin/XcodeConsoleUnicodePlugin-Prefix.pch";
+				INFOPLIST_FILE = "XcodeConsoleUnicodePlugin/XcodeConsoleUnicodePlugin-Info.plist";
+				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xcplugin;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D5E9C66D19639F6C00115F7C /* Build configuration list for PBXProject "XcodeConsoleUnicodePlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5E9C68319639F6C00115F7C /* Debug */,
+				D5E9C68419639F6C00115F7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D5E9C68519639F6C00115F7C /* Build configuration list for PBXNativeTarget "XcodeConsoleUnicodePlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5E9C68619639F6C00115F7C /* Debug */,
+				D5E9C68719639F6C00115F7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D5E9C66A19639F6C00115F7C /* Project object */;
+}

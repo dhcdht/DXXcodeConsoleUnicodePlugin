@@ -175,6 +175,7 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
         NSView *contentView = window.contentView;
         IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
         [console insertText:aString];
+        [console insertNewline:@""];
         break;
     }
 }

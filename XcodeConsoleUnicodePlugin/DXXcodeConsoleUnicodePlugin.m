@@ -25,12 +25,12 @@ static IMP IMP_NSTextStorage_fixAttributesInRange = nil;
     NSString *convertStr = [DXXcodeConsoleUnicodePlugin convertUnicode:rangeString];
     if (![convertStr isEqualToString:rangeString] && convertStr) {
         
-        NSDictionary *clearAttrs =[NSDictionary dictionaryWithObjectsAndKeys:
-                                   [NSFont systemFontOfSize:0.001], NSFontAttributeName,
-                                   [NSColor clearColor], NSForegroundColorAttributeName, nil];
-        
-		[self addAttributes:clearAttrs range:aRange];
-        
+//        NSDictionary *clearAttrs =[NSDictionary dictionaryWithObjectsAndKeys:
+//                                   [NSFont systemFontOfSize:0.001], NSFontAttributeName,
+//                                   [NSColor clearColor], NSForegroundColorAttributeName, nil];
+//        
+//		[self addAttributes:clearAttrs range:aRange];
+      
         dispatch_async(dispatch_get_main_queue(), ^{
             [DXXcodeConsoleUnicodePlugin addStringToConsole:convertStr];
         });

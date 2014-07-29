@@ -163,7 +163,8 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
 
 + (NSString*)convertUnicode:(NSString*)aString
 {
-    NSString *ret = [NSString stringWithCString:[aString cStringUsingEncoding:[aString smallestEncoding]]
+    NSString *formatString = [aString stringByReplacingOccurrencesOfString:@"\\\\" withString:@"\\"];
+    NSString *ret = [NSString stringWithCString:[formatString cStringUsingEncoding:NSUTF8StringEncoding]
                                        encoding:NSNonLossyASCIIStringEncoding];
     
     return ret;

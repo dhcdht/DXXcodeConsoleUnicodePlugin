@@ -175,9 +175,13 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
     for (NSWindow *window in [NSApp windows]) {
         NSView *contentView = window.contentView;
         IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
-        [console insertText:aString];
-        [console insertNewline:@""];
-        break;
+        if (console)
+        {
+            [console insertText:aString];
+            [console insertNewline:@""];
+            
+            break;
+        }
     }
 }
 
@@ -193,6 +197,7 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
             }
         }
     }
+    
     return nil;
 }
 

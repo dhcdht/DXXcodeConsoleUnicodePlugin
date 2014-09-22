@@ -10,29 +10,29 @@
 	<string>XcodeConsoleUnicodePlugin</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>06C9B37D-99E7-46A6-ADB3-F6AAD65FB9E5</key>
+		<key>ACFDDCA73D6F57A3DE89D42ACA4E2785FFAB6C15</key>
 		<string>http://git.in.zhihu.com/dhc/dxxcodeconsoleunicodeplugin.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>XcodeConsoleUnicodePlugin.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>06C9B37D-99E7-46A6-ADB3-F6AAD65FB9E5</key>
+		<key>ACFDDCA73D6F57A3DE89D42ACA4E2785FFAB6C15</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>http://git.in.zhihu.com/dhc/dxxcodeconsoleunicodeplugin.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>06C9B37D-99E7-46A6-ADB3-F6AAD65FB9E5</string>
+	<string>ACFDDCA73D6F57A3DE89D42ACA4E2785FFAB6C15</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>06C9B37D-99E7-46A6-ADB3-F6AAD65FB9E5</string>
+			<string>ACFDDCA73D6F57A3DE89D42ACA4E2785FFAB6C15</string>
 			<key>IDESourceControlWCCName</key>
 			<string>XcodeConsoleUnicodePlugin</string>
 		</dict>

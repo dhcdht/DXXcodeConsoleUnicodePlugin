@@ -178,7 +178,6 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
         if (console)
         {
             [console insertText:aString];
-            [console insertNewline:@""];
             
             break;
         }

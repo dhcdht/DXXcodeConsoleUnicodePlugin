@@ -10,6 +10,9 @@
 
 #import <objc/runtime.h>
 
+static NSString *sConvertInConsoleEnableKey = @"kConvertInConsoleEnableKey";
+static BOOL sIsConvertInConsoleEnabled;
+
 static DXXcodeConsoleUnicodePlugin *sharedPlugin;
 
 static IMP IMP_NSTextStorage_fixAttributesInRange = nil;
@@ -19,22 +22,24 @@ static IMP IMP_NSTextStorage_fixAttributesInRange = nil;
 - (void)fixAttributesInRange:(NSRange)aRange
 {
     IMP_NSTextStorage_fixAttributesInRange(self, _cmd, aRange);
-    
+  
+  if (sIsConvertInConsoleEnabled) {
     NSString *rangeString = [[self string] substringWithRange:aRange];
     
     NSString *convertStr = [DXXcodeConsoleUnicodePlugin convertUnicode:rangeString];
     if (![convertStr isEqualToString:rangeString] && convertStr) {
-        
-//        NSDictionary *clearAttrs =[NSDictionary dictionaryWithObjectsAndKeys:
-//                                   [NSFont systemFontOfSize:0.001], NSFontAttributeName,
-//                                   [NSColor clearColor], NSForegroundColorAttributeName, nil];
-//        
-//		[self addAttributes:clearAttrs range:aRange];
       
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [DXXcodeConsoleUnicodePlugin addStringToConsole:convertStr];
-        });
+      //        NSDictionary *clearAttrs =[NSDictionary dictionaryWithObjectsAndKeys:
+      //                                   [NSFont systemFontOfSize:0.001], NSFontAttributeName,
+      //                                   [NSColor clearColor], NSForegroundColorAttributeName, nil];
+      //
+      //		[self addAttributes:clearAttrs range:aRange];
+      
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [DXXcodeConsoleUnicodePlugin addStringToConsole:convertStr];
+      });
     }
+  }
 }
 
 @end
@@ -42,6 +47,9 @@ static IMP IMP_NSTextStorage_fixAttributesInRange = nil;
 @interface DXXcodeConsoleUnicodePlugin()
 
 @property (nonatomic, strong) NSBundle *bundle;
+
+@property (nonatomic, strong) NSMenuItem *convertInConsoleItem;
+
 @end
 
 @implementation DXXcodeConsoleUnicodePlugin
@@ -117,11 +125,25 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
             [convertItem setKeyEquivalentModifierMask:NSAlternateKeyMask];
             [convertItem setTarget:self];
             [[menuItem submenu] addItem:convertItem];
+          
+          self.convertInConsoleItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicodeInConsole(Beta)"
+                                                                        action:@selector(convertUnicodeInConsoleAction)
+                                                                 keyEquivalent:@""];
+          [self.convertInConsoleItem setTarget:self];
+          [[menuItem submenu] addItem:self.convertInConsoleItem];
         }
         
         IMP_NSTextStorage_fixAttributesInRange = ReplaceInstanceMethod([NSTextStorage class], @selector(fixAttributesInRange:),
                                                                        [XcodeConsoleUnicode_NSTextStorage class], @selector(fixAttributesInRange:));
     }
+  
+  sIsConvertInConsoleEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:sConvertInConsoleEnableKey];
+  if (sIsConvertInConsoleEnabled) {
+    self.convertInConsoleItem.state = NSOnState;
+  } else {
+    self.convertInConsoleItem.state = NSOffState;
+  }
+  
     return self;
 }
 
@@ -154,6 +176,20 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
     
     NSAlert *alert = [NSAlert alertWithMessageText:@"" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:str, nil];
     [alert runModal];
+}
+
+- (void)convertUnicodeInConsoleAction
+{
+  BOOL convertInConsoleEnable = [[NSUserDefaults standardUserDefaults] boolForKey:sConvertInConsoleEnableKey];
+  [[NSUserDefaults standardUserDefaults] setBool:!convertInConsoleEnable forKey:sConvertInConsoleEnableKey];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+  
+  sIsConvertInConsoleEnabled = !convertInConsoleEnable;
+  if (sIsConvertInConsoleEnabled) {
+    self.convertInConsoleItem.state = NSOnState;
+  } else {
+    self.convertInConsoleItem.state = NSOffState;
+  }
 }
 
 //- (void)copyAndConvertAction

@@ -238,9 +238,12 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
     IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
     if (console)
     {
-      [console _batchReplaceCharactersWithoutNotificationsInRange:aRange
-                                                       withString:aString
-                                                       attributes:aAttributes];
+      if ([console accessibilityStringForRange:aRange])
+      {
+        [console _batchReplaceCharactersWithoutNotificationsInRange:aRange
+                                                         withString:aString
+                                                         attributes:aAttributes];
+      }
       
       break;
     }

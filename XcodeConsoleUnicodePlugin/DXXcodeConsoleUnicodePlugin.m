@@ -35,8 +35,12 @@ static IMP IMP_NSTextStorage_fixAttributesInRange = nil;
       //
       //		[self addAttributes:clearAttrs range:aRange];
       
+      NSDictionary *attributes = [self fontAttributesInRange:aRange];
       dispatch_async(dispatch_get_main_queue(), ^{
-        [DXXcodeConsoleUnicodePlugin addStringToConsole:convertStr];
+//        [DXXcodeConsoleUnicodePlugin addStringToConsole:convertStr];
+        [DXXcodeConsoleUnicodePlugin replaceStringInRange:aRange
+                                               withString:convertStr
+                                             andAttribute:attributes];
       });
     }
   }
@@ -221,6 +225,22 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
     if (console)
     {
       [console insertText:aString];
+      
+      break;
+    }
+  }
+}
+
++ (void)replaceStringInRange:(NSRange)aRange withString:(NSString*)aString andAttribute:(NSDictionary*)aAttributes
+{
+  for (NSWindow *window in [NSApp windows]) {
+    NSView *contentView = window.contentView;
+    IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
+    if (console)
+    {
+      [console _batchReplaceCharactersWithoutNotificationsInRange:aRange
+                                                       withString:aString
+                                                       attributes:aAttributes];
       
       break;
     }

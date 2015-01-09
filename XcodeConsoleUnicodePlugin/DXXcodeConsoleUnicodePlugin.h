@@ -20,6 +20,6 @@
 
 + (NSString*)convertUnicode:(NSString*)aString;
 + (void)addStringToConsole:(NSString*)aString;
-+ (void)replaceStringInRange:(NSRange)aRange withString:(NSString*)aString andAttribute:(NSDictionary*)aAttributes;
++ (void)replaceStringInRange:(NSRange)aRange verifyString:(NSString*)aVerifyString withString:(NSString*)aReplaceString andAttribute:(NSDictionary*)aAttributes;
 
 @end

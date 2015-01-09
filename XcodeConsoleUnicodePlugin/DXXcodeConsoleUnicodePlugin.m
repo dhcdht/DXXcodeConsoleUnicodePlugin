@@ -39,6 +39,7 @@ static IMP IMP_NSTextStorage_fixAttributesInRange = nil;
       dispatch_async(dispatch_get_main_queue(), ^{
 //        [DXXcodeConsoleUnicodePlugin addStringToConsole:convertStr];
         [DXXcodeConsoleUnicodePlugin replaceStringInRange:aRange
+                                             verifyString:rangeString
                                                withString:convertStr
                                              andAttribute:attributes];
       });
@@ -231,21 +232,22 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
   }
 }
 
-+ (void)replaceStringInRange:(NSRange)aRange withString:(NSString*)aString andAttribute:(NSDictionary*)aAttributes
++ (void)replaceStringInRange:(NSRange)aRange verifyString:(NSString*)aVerifyString withString:(NSString*)aReplaceString andAttribute:(NSDictionary*)aAttributes
 {
   for (NSWindow *window in [NSApp windows]) {
     NSView *contentView = window.contentView;
     IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
     if (console)
     {
-      if ([console accessibilityStringForRange:aRange])
+      NSString *stringInRange = [console accessibilityStringForRange:aRange];
+      if ([stringInRange isEqualToString:aVerifyString])
       {
         [console _batchReplaceCharactersWithoutNotificationsInRange:aRange
-                                                         withString:aString
+                                                         withString:aReplaceString
                                                          attributes:aAttributes];
+        
+        break;
       }
-      
-      break;
     }
   }
 }

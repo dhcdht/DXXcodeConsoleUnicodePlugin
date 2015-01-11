@@ -1,7 +1,7 @@
 DXXcodeConsoleUnicodePlugin
 ===========================
 
-转换Xcode控制台中一些不可阅读的字符。
+转换 Xcode 控制台中一些不可阅读的字符。
 
 比如：
 
@@ -10,3 +10,11 @@ Error Domain=kCFErrorDomainCFNetwork Code=310 "\u4e0e\u5b89\u5168 web \u4ee3\u74
 转换到：
 
 Error Domain=kCFErrorDomainCFNetwork Code=310 "与安全 web 代理服务器 (HTTPS) 通信时出现问题。" UserInfo=0x155e20e0 {_kCFStreamErrorCodeKey=-2096, NSErrorFailingURLStringKey=https://api.leancloud.cn/1.1/batch/save, NSErrorFailingURLKey=https://api.leancloud.cn/1.1/batch/save, NSLocalizedDescription=与安全 web 代理服务器 (HTTPS) 通信时出现问题。, _kCFStreamErrorDomainKey=4, NSLocalizedRecoverySuggestion=请检查您的代理设置。有关此问题的帮助，请联系您的系统管理员。}
+
+#使用方法：
+
+两种：
+
+1.快捷键 option+c 会转换当前 **剪贴板** 中的内容并用一个对话框把转换后的内容显示出来。
+
+2.在 Xcode 的 **Edit** 菜单中勾选 **ConvertUnicodeInConsole(Beta)**，然后 console 中再出现 *\u4e0e* 时，就会自动转换成 *与* 显示。

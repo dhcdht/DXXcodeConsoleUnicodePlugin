@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C27DBA31A620B270012B2FE /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C27DBA21A620B270012B2FE /* RegExCategories.m */; };
 		D5E9C67619639F6C00115F7C /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E9C67519639F6C00115F7C /* AppKit.framework */; };
 		D5E9C67819639F6C00115F7C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E9C67719639F6C00115F7C /* Foundation.framework */; };
 		D5E9C67E19639F6C00115F7C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5E9C67C19639F6C00115F7C /* InfoPlist.strings */; };
@@ -14,6 +15,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C27DBA11A620B270012B2FE /* RegExCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExCategories.h; sourceTree = "<group>"; };
+		3C27DBA21A620B270012B2FE /* RegExCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegExCategories.m; sourceTree = "<group>"; };
 		D537BEA01963CDFE009CB6DA /* DVTFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTFoundation.h; sourceTree = "<group>"; };
 		D537BEA11963CDFE009CB6DA /* DVTKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVTKit.h; sourceTree = "<group>"; };
 		D537BEA21963CDFE009CB6DA /* IDEFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEFoundation.h; sourceTree = "<group>"; };
@@ -87,6 +90,8 @@
 				D5E9C67F19639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.h */,
 				D5E9C68019639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m */,
 				D5E9C67A19639F6C00115F7C /* Supporting Files */,
+				3C27DBA11A620B270012B2FE /* RegExCategories.h */,
+				3C27DBA21A620B270012B2FE /* RegExCategories.m */,
 			);
 			path = XcodeConsoleUnicodePlugin;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D5E9C68119639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m in Sources */,
+				3C27DBA31A620B270012B2FE /* RegExCategories.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

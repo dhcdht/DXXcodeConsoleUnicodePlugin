@@ -10,6 +10,9 @@
 
 #import <objc/runtime.h>
 
+#import "RegExCategories.h"
+
+
 static NSString *sConvertInConsoleEnableKey = @"kConvertInConsoleEnableKey";
 static BOOL sIsConvertInConsoleEnabled;
 
@@ -210,10 +213,22 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
 
 + (NSString*)convertUnicode:(NSString*)aString
 {
-  NSString *formatString = [aString stringByReplacingOccurrencesOfString:@"\\\\" withString:@"\\"];
-  formatString = [formatString stringByReplacingOccurrencesOfString:@"\\n" withString:@""];
-  NSString *ret = [NSString stringWithCString:[formatString cStringUsingEncoding:[formatString smallestEncoding]]
-                                     encoding:NSNonLossyASCIIStringEncoding];
+//  NSString *formatString = [aString stringByReplacingOccurrencesOfString:@"\\\\" withString:@"\\"];
+//  formatString = [formatString stringByReplacingOccurrencesOfString:@"\\n" withString:@""];
+//
+//  NSString *formatString = [aString replace:RX(@"\\\\[^U]")
+//                                  withBlock:^NSString *(NSString *match) {
+//                                    return [match substringFromIndex:1];
+//                                  }];
+//
+//  NSString *ret = [NSString stringWithCString:[formatString cStringUsingEncoding:NSUTF8StringEncoding]
+//                                     encoding:NSNonLossyASCIIStringEncoding];
+  
+  NSString *ret = [aString replace:RX(@"\\\\[uU]\\w{4}")
+                         withBlock:^NSString *(NSString *match) {
+                           return [NSString stringWithCString:[match cStringUsingEncoding:NSUTF8StringEncoding]
+                                                     encoding:NSNonLossyASCIIStringEncoding];
+                         }];
   
   return ret;
 }

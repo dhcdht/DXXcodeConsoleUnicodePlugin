@@ -239,7 +239,7 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
     IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
     if (console)
     {
-      NSString *stringInRange = [console accessibilityStringForRange:aRange];
+      NSString *stringInRange = [[console attributedSubstringFromRange:aRange] string];
       if ([stringInRange isEqualToString:aVerifyString])
       {
         [console _batchReplaceCharactersWithoutNotificationsInRange:aRange

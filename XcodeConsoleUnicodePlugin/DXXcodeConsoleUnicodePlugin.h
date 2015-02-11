@@ -8,13 +8,13 @@
 
 #import <AppKit/AppKit.h>
 
-#import "IDEKit.h"
 
-@interface XcodeConsoleUnicode_NSTextStorage : NSTextStorage
+@interface XcodeConsoleUnicode_IDEConsoleItem : NSObject
 
-- (void)fixAttributesInRange:(NSRange)aRange;
+- (id)initWithAdaptorType:(id)arg1 content:(id)arg2 kind:(int)arg3;
 
 @end
+
 
 @interface DXXcodeConsoleUnicodePlugin : NSObject
 

@@ -8,6 +8,7 @@
 
 #import "DXXcodeConsoleUnicodePlugin.h"
 
+#import "IDEKit.h"
 #import <objc/runtime.h>
 
 #import "RegExCategories.h"
@@ -18,39 +19,23 @@ static BOOL sIsConvertInConsoleEnabled;
 
 static DXXcodeConsoleUnicodePlugin *sharedPlugin;
 
-static IMP IMP_NSTextStorage_fixAttributesInRange = nil;
 
-@implementation XcodeConsoleUnicode_NSTextStorage
+static IMP IMP_IDEConsoleItem_initWithAdaptorType = nil;
+@implementation XcodeConsoleUnicode_IDEConsoleItem
 
-- (void)fixAttributesInRange:(NSRange)aRange
+- (id)initWithAdaptorType:(id)arg1 content:(id)arg2 kind:(int)arg3
 {
-  IMP_NSTextStorage_fixAttributesInRange(self, _cmd, aRange);
+  id item = IMP_IDEConsoleItem_initWithAdaptorType(self, _cmd, arg1, arg2, arg3);
   
-  if (sIsConvertInConsoleEnabled) {
-    NSString *rangeString = [[self string] substringWithRange:aRange];
-    
-    NSString *convertStr = [DXXcodeConsoleUnicodePlugin convertUnicode:rangeString];
-    if (![convertStr isEqualToString:rangeString] && convertStr) {
-      
-      //        NSDictionary *clearAttrs =[NSDictionary dictionaryWithObjectsAndKeys:
-      //                                   [NSFont systemFontOfSize:0.001], NSFontAttributeName,
-      //                                   [NSColor clearColor], NSForegroundColorAttributeName, nil];
-      //
-      //		[self addAttributes:clearAttrs range:aRange];
-      
-      NSDictionary *attributes = [self fontAttributesInRange:aRange];
-      dispatch_async(dispatch_get_main_queue(), ^{
-//        [DXXcodeConsoleUnicodePlugin addStringToConsole:convertStr];
-        [DXXcodeConsoleUnicodePlugin replaceStringInRange:aRange
-                                             verifyString:rangeString
-                                               withString:convertStr
-                                             andAttribute:attributes];
-      });
-    }
-  }
+  NSString *logText = [item valueForKey:@"content"];
+  NSString *resultText = [DXXcodeConsoleUnicodePlugin convertUnicode:logText];
+  [item setValue:resultText forKey:@"content"];
+  
+  return item;
 }
 
 @end
+
 
 @interface DXXcodeConsoleUnicodePlugin()
 
@@ -141,8 +126,8 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
       [[menuItem submenu] addItem:self.convertInConsoleItem];
     }
     
-    IMP_NSTextStorage_fixAttributesInRange = ReplaceInstanceMethod([NSTextStorage class], @selector(fixAttributesInRange:),
-                                                                   [XcodeConsoleUnicode_NSTextStorage class], @selector(fixAttributesInRange:));
+    IMP_IDEConsoleItem_initWithAdaptorType = ReplaceInstanceMethod(NSClassFromString(@"IDEConsoleItem"), @selector(initWithAdaptorType:content:kind:),
+                                                                   [XcodeConsoleUnicode_IDEConsoleItem class], @selector(initWithAdaptorType:content:kind:));
   }
   
   sIsConvertInConsoleEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:sConvertInConsoleEnableKey];

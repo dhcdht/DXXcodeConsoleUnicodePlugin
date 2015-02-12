@@ -27,9 +27,11 @@ static IMP IMP_IDEConsoleItem_initWithAdaptorType = nil;
 {
   id item = IMP_IDEConsoleItem_initWithAdaptorType(self, _cmd, arg1, arg2, arg3);
   
-  NSString *logText = [item valueForKey:@"content"];
-  NSString *resultText = [DXXcodeConsoleUnicodePlugin convertUnicode:logText];
-  [item setValue:resultText forKey:@"content"];
+  if (sIsConvertInConsoleEnabled) {
+    NSString *logText = [item valueForKey:@"content"];
+    NSString *resultText = [DXXcodeConsoleUnicodePlugin convertUnicode:logText];
+    [item setValue:resultText forKey:@"content"];
+  }
   
   return item;
 }
@@ -110,10 +112,6 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
     if (menuItem) {
       [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
       
-      //            NSMenuItem *copyAndConvertItem = [[NSMenuItem alloc] initWithTitle:@"CopyAndConvertUnicode" action:@selector(copyAndConvertAction) keyEquivalent:@""];
-      //            [copyAndConvertItem setTarget:self];
-      //            [[menuItem submenu] addItem:copyAndConvertItem];
-      
       NSMenuItem *convertItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicode" action:@selector(convertAction) keyEquivalent:@"c"];
       [convertItem setKeyEquivalentModifierMask:NSAlternateKeyMask];
       [convertItem setTarget:self];
@@ -191,24 +189,8 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
   }
 }
 
-//- (void)copyAndConvertAction
-//{
-//    NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
-//}
-
 + (NSString*)convertUnicode:(NSString*)aString
 {
-//  NSString *formatString = [aString stringByReplacingOccurrencesOfString:@"\\\\" withString:@"\\"];
-//  formatString = [formatString stringByReplacingOccurrencesOfString:@"\\n" withString:@""];
-//
-//  NSString *formatString = [aString replace:RX(@"\\\\[^U]")
-//                                  withBlock:^NSString *(NSString *match) {
-//                                    return [match substringFromIndex:1];
-//                                  }];
-//
-//  NSString *ret = [NSString stringWithCString:[formatString cStringUsingEncoding:NSUTF8StringEncoding]
-//                                     encoding:NSNonLossyASCIIStringEncoding];
-  
   NSString *ret = [aString replace:RX(@"\\\\[uU]\\w{4}")
                          withBlock:^NSString *(NSString *match) {
                            return [NSString stringWithCString:[match cStringUsingEncoding:NSUTF8StringEncoding]
@@ -216,56 +198,6 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
                          }];
   
   return ret;
-}
-
-+ (void)addStringToConsole:(NSString*)aString
-{
-  for (NSWindow *window in [NSApp windows]) {
-    NSView *contentView = window.contentView;
-    IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
-    if (console)
-    {
-      [console insertText:aString];
-      
-      break;
-    }
-  }
-}
-
-+ (void)replaceStringInRange:(NSRange)aRange verifyString:(NSString*)aVerifyString withString:(NSString*)aReplaceString andAttribute:(NSDictionary*)aAttributes
-{
-  for (NSWindow *window in [NSApp windows]) {
-    NSView *contentView = window.contentView;
-    IDEConsoleTextView *console = [self consoleViewInMainView:contentView];
-    if (console)
-    {
-      NSString *stringInRange = [[console attributedSubstringFromRange:aRange] string];
-      if ([stringInRange isEqualToString:aVerifyString])
-      {
-        [console _batchReplaceCharactersWithoutNotificationsInRange:aRange
-                                                         withString:aReplaceString
-                                                         attributes:aAttributes];
-        
-        break;
-      }
-    }
-  }
-}
-
-+ (IDEConsoleTextView *)consoleViewInMainView:(NSView *)mainView
-{
-  for (NSView *childView in mainView.subviews) {
-    if ([childView isKindOfClass:NSClassFromString(@"IDEConsoleTextView")]) {
-      return (IDEConsoleTextView *)childView;
-    } else {
-      NSView *v = [self consoleViewInMainView:childView];
-      if ([v isKindOfClass:NSClassFromString(@"IDEConsoleTextView")]) {
-        return (IDEConsoleTextView *)v;
-      }
-    }
-  }
-  
-  return nil;
 }
 
 - (void)dealloc

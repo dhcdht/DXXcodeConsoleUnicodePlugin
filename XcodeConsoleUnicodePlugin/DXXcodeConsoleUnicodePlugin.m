@@ -117,7 +117,7 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
       [convertItem setTarget:self];
       [[menuItem submenu] addItem:convertItem];
       
-      self.convertInConsoleItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicodeInConsole(Beta)"
+      self.convertInConsoleItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicodeInConsole"
                                                              action:@selector(convertUnicodeInConsoleAction)
                                                       keyEquivalent:@""];
       [self.convertInConsoleItem setTarget:self];

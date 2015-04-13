@@ -17,4 +17,4 @@ Error Domain=kCFErrorDomainCFNetwork Code=310 "与安全 web 代理服务器 (HT
 
 1.快捷键 option+c 会转换当前 **剪贴板** 中的内容并用一个对话框把转换后的内容显示出来。
 
-2.在 Xcode 的 **Edit** 菜单中勾选 **ConvertUnicodeInConsole(Beta)**，然后 console 中再出现 *\u4e0e* 时，就会自动转换成 *与* 显示。
+2.在 Xcode 的 **Edit** 菜单中勾选 **ConvertUnicodeInConsole**，然后 console 中再出现 *\u4e0e* 时，就会自动转换成 *与* 显示。

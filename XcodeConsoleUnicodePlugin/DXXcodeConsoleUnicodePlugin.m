@@ -95,7 +95,52 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
   if ([currentApplicationName isEqual:@"Xcode"]) {
     dispatch_once(&onceToken, ^{
       sharedPlugin = [[self alloc] initWithBundle:plugin];
+      
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(menuDidChange)
+                                                   name:NSMenuDidChangeItemNotification
+                                                 object:nil];
     });
+  }
+}
+
++ (void)menuDidChange
+{
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:NSMenuDidChangeItemNotification
+                                                object:nil];
+  
+  [sharedPlugin createMenu];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(menuDidChange)
+                                               name:NSMenuDidChangeItemNotification
+                                             object:nil];
+}
+
+- (void)createMenu
+{
+  NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
+  if (menuItem && !self.convertInConsoleItem) {
+    [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
+    
+    NSMenuItem *convertItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicode" action:@selector(convertAction) keyEquivalent:@"c"];
+    [convertItem setKeyEquivalentModifierMask:NSAlternateKeyMask];
+    [convertItem setTarget:self];
+    [[menuItem submenu] addItem:convertItem];
+    
+    self.convertInConsoleItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicodeInConsole"
+                                                           action:@selector(convertUnicodeInConsoleAction)
+                                                    keyEquivalent:@""];
+    [self.convertInConsoleItem setTarget:self];
+    [[menuItem submenu] addItem:self.convertInConsoleItem];
+    
+    sIsConvertInConsoleEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:sConvertInConsoleEnableKey];
+    if (sIsConvertInConsoleEnabled) {
+      self.convertInConsoleItem.state = NSOnState;
+    } else {
+      self.convertInConsoleItem.state = NSOffState;
+    }
   }
 }
 
@@ -108,31 +153,10 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
     // Create menu items, initialize UI, etc.
     
     // Sample Menu Item:
-    NSMenuItem *menuItem = [[NSApp mainMenu] itemWithTitle:@"Edit"];
-    if (menuItem) {
-      [[menuItem submenu] addItem:[NSMenuItem separatorItem]];
-      
-      NSMenuItem *convertItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicode" action:@selector(convertAction) keyEquivalent:@"c"];
-      [convertItem setKeyEquivalentModifierMask:NSAlternateKeyMask];
-      [convertItem setTarget:self];
-      [[menuItem submenu] addItem:convertItem];
-      
-      self.convertInConsoleItem = [[NSMenuItem alloc] initWithTitle:@"ConvertUnicodeInConsole"
-                                                             action:@selector(convertUnicodeInConsoleAction)
-                                                      keyEquivalent:@""];
-      [self.convertInConsoleItem setTarget:self];
-      [[menuItem submenu] addItem:self.convertInConsoleItem];
-    }
+    [self createMenu];
     
     IMP_IDEConsoleItem_initWithAdaptorType = ReplaceInstanceMethod(NSClassFromString(@"IDEConsoleItem"), @selector(initWithAdaptorType:content:kind:),
                                                                    [XcodeConsoleUnicode_IDEConsoleItem class], @selector(initWithAdaptorType:content:kind:));
-  }
-  
-  sIsConvertInConsoleEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:sConvertInConsoleEnableKey];
-  if (sIsConvertInConsoleEnabled) {
-    self.convertInConsoleItem.state = NSOnState;
-  } else {
-    self.convertInConsoleItem.state = NSOffState;
   }
   
   return self;

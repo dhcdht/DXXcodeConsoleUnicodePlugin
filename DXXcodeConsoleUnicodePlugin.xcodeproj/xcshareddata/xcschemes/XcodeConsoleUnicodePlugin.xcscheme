@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D5E9C67119639F6C00115F7C"
-               BuildableName = "XcodeConsoleUnicodePlugin.xcplugin"
-               BlueprintName = "XcodeConsoleUnicodePlugin"
-               ReferencedContainer = "container:XcodeConsoleUnicodePlugin.xcodeproj">
+               BuildableName = "DXXcodeConsoleUnicodePlugin.xcplugin"
+               BlueprintName = "DXXcodeConsoleUnicodePlugin"
+               ReferencedContainer = "container:DXXcodeConsoleUnicodePlugin.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -41,15 +41,16 @@
       allowLocationSimulation = "YES"
       viewDebuggingEnabled = "No">
       <PathRunnable
+         runnableDebuggingMode = "0"
          FilePath = "/Applications/Xcode.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D5E9C67119639F6C00115F7C"
-            BuildableName = "XcodeConsoleUnicodePlugin.xcplugin"
-            BlueprintName = "XcodeConsoleUnicodePlugin"
-            ReferencedContainer = "container:XcodeConsoleUnicodePlugin.xcodeproj">
+            BuildableName = "DXXcodeConsoleUnicodePlugin.xcplugin"
+            BlueprintName = "DXXcodeConsoleUnicodePlugin"
+            ReferencedContainer = "container:DXXcodeConsoleUnicodePlugin.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -65,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D5E9C67119639F6C00115F7C"
-            BuildableName = "XcodeConsoleUnicodePlugin.xcplugin"
-            BlueprintName = "XcodeConsoleUnicodePlugin"
-            ReferencedContainer = "container:XcodeConsoleUnicodePlugin.xcodeproj">
+            BuildableName = "DXXcodeConsoleUnicodePlugin.xcplugin"
+            BlueprintName = "DXXcodeConsoleUnicodePlugin"
+            ReferencedContainer = "container:DXXcodeConsoleUnicodePlugin.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

@@ -22,14 +22,14 @@
 		D537BEA21963CDFE009CB6DA /* IDEFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEFoundation.h; sourceTree = "<group>"; };
 		D537BEA31963CDFE009CB6DA /* IDEKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDEKit.h; sourceTree = "<group>"; };
 		D537BEA41963CDFE009CB6DA /* IDESourceEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDESourceEditor.h; sourceTree = "<group>"; };
-		D5E9C67219639F6C00115F7C /* XcodeConsoleUnicodePlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XcodeConsoleUnicodePlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5E9C67219639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.xcplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DXXcodeConsoleUnicodePlugin.xcplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5E9C67519639F6C00115F7C /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D5E9C67719639F6C00115F7C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D5E9C67B19639F6C00115F7C /* XcodeConsoleUnicodePlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XcodeConsoleUnicodePlugin-Info.plist"; sourceTree = "<group>"; };
+		D5E9C67B19639F6C00115F7C /* DXXcodeConsoleUnicodePlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DXXcodeConsoleUnicodePlugin-Info.plist"; sourceTree = "<group>"; };
 		D5E9C67D19639F6C00115F7C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D5E9C67F19639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DXXcodeConsoleUnicodePlugin.h; sourceTree = "<group>"; };
 		D5E9C68019639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DXXcodeConsoleUnicodePlugin.m; sourceTree = "<group>"; };
-		D5E9C68219639F6C00115F7C /* XcodeConsoleUnicodePlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XcodeConsoleUnicodePlugin-Prefix.pch"; sourceTree = "<group>"; };
+		D5E9C68219639F6C00115F7C /* DXXcodeConsoleUnicodePlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DXXcodeConsoleUnicodePlugin-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 		D5E9C67319639F6C00115F7C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5E9C67219639F6C00115F7C /* XcodeConsoleUnicodePlugin.xcplugin */,
+				D5E9C67219639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.xcplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,9 +99,9 @@
 		D5E9C67A19639F6C00115F7C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D5E9C67B19639F6C00115F7C /* XcodeConsoleUnicodePlugin-Info.plist */,
+				D5E9C67B19639F6C00115F7C /* DXXcodeConsoleUnicodePlugin-Info.plist */,
 				D5E9C67C19639F6C00115F7C /* InfoPlist.strings */,
-				D5E9C68219639F6C00115F7C /* XcodeConsoleUnicodePlugin-Prefix.pch */,
+				D5E9C68219639F6C00115F7C /* DXXcodeConsoleUnicodePlugin-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -109,9 +109,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D5E9C67119639F6C00115F7C /* XcodeConsoleUnicodePlugin */ = {
+		D5E9C67119639F6C00115F7C /* DXXcodeConsoleUnicodePlugin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5E9C68519639F6C00115F7C /* Build configuration list for PBXNativeTarget "XcodeConsoleUnicodePlugin" */;
+			buildConfigurationList = D5E9C68519639F6C00115F7C /* Build configuration list for PBXNativeTarget "DXXcodeConsoleUnicodePlugin" */;
 			buildPhases = (
 				D5E9C66E19639F6C00115F7C /* Sources */,
 				D5E9C66F19639F6C00115F7C /* Frameworks */,
@@ -121,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = XcodeConsoleUnicodePlugin;
+			name = DXXcodeConsoleUnicodePlugin;
 			productName = XcodeConsoleUnicodePlugin;
-			productReference = D5E9C67219639F6C00115F7C /* XcodeConsoleUnicodePlugin.xcplugin */;
+			productReference = D5E9C67219639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.xcplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -136,7 +136,7 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = dhcdht;
 			};
-			buildConfigurationList = D5E9C66D19639F6C00115F7C /* Build configuration list for PBXProject "XcodeConsoleUnicodePlugin" */;
+			buildConfigurationList = D5E9C66D19639F6C00115F7C /* Build configuration list for PBXProject "DXXcodeConsoleUnicodePlugin" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -148,7 +148,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D5E9C67119639F6C00115F7C /* XcodeConsoleUnicodePlugin */,
+				D5E9C67119639F6C00115F7C /* DXXcodeConsoleUnicodePlugin */,
 			);
 		};
 /* End PBXProject section */
@@ -265,10 +265,10 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XcodeConsoleUnicodePlugin/XcodeConsoleUnicodePlugin-Prefix.pch";
-				INFOPLIST_FILE = "XcodeConsoleUnicodePlugin/XcodeConsoleUnicodePlugin-Info.plist";
+				GCC_PREFIX_HEADER = "XcodeConsoleUnicodePlugin/DXXcodeConsoleUnicodePlugin-Prefix.pch";
+				INFOPLIST_FILE = "XcodeConsoleUnicodePlugin/DXXcodeConsoleUnicodePlugin-Info.plist";
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DXXcodeConsoleUnicodePlugin;
 				WRAPPER_EXTENSION = xcplugin;
 			};
 			name = Debug;
@@ -280,10 +280,10 @@
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = "$(HOME)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "XcodeConsoleUnicodePlugin/XcodeConsoleUnicodePlugin-Prefix.pch";
-				INFOPLIST_FILE = "XcodeConsoleUnicodePlugin/XcodeConsoleUnicodePlugin-Info.plist";
+				GCC_PREFIX_HEADER = "XcodeConsoleUnicodePlugin/DXXcodeConsoleUnicodePlugin-Prefix.pch";
+				INFOPLIST_FILE = "XcodeConsoleUnicodePlugin/DXXcodeConsoleUnicodePlugin-Info.plist";
 				INSTALL_PATH = "/Library/Application Support/Developer/Shared/Xcode/Plug-ins";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DXXcodeConsoleUnicodePlugin;
 				WRAPPER_EXTENSION = xcplugin;
 			};
 			name = Release;
@@ -291,7 +291,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D5E9C66D19639F6C00115F7C /* Build configuration list for PBXProject "XcodeConsoleUnicodePlugin" */ = {
+		D5E9C66D19639F6C00115F7C /* Build configuration list for PBXProject "DXXcodeConsoleUnicodePlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5E9C68319639F6C00115F7C /* Debug */,
@@ -300,7 +300,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5E9C68519639F6C00115F7C /* Build configuration list for PBXNativeTarget "XcodeConsoleUnicodePlugin" */ = {
+		D5E9C68519639F6C00115F7C /* Build configuration list for PBXNativeTarget "DXXcodeConsoleUnicodePlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5E9C68619639F6C00115F7C /* Debug */,

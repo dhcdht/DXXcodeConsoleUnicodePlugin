@@ -89,9 +89,9 @@
 				D537BE9F1963CDFE009CB6DA /* XcodeClasses */,
 				D5E9C67F19639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.h */,
 				D5E9C68019639F6C00115F7C /* DXXcodeConsoleUnicodePlugin.m */,
-				D5E9C67A19639F6C00115F7C /* Supporting Files */,
 				3C27DBA11A620B270012B2FE /* RegExCategories.h */,
 				3C27DBA21A620B270012B2FE /* RegExCategories.m */,
+				D5E9C67A19639F6C00115F7C /* Supporting Files */,
 			);
 			path = XcodeConsoleUnicodePlugin;
 			sourceTree = "<group>";

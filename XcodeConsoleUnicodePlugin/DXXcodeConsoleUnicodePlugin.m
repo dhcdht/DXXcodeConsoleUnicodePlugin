@@ -190,13 +190,24 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
   
   //    [pasteboard setString:str forType:NSStringPboardType];
   
-  NSAlert *alert = nil;
-  if ([str length]) {
-    alert = [NSAlert alertWithMessageText:@"" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:str, nil];
-  } else if ([originString length]) {
-    alert = [NSAlert alertWithMessageText:@"" defaultButton:nil alternateButton:nil otherButton:nil informativeTextWithFormat:originString, nil];
-  }
-  [alert runModal];
+    if ([str length]) {
+        str = originString;
+    }
+    
+    NSAlert *alert = [NSAlert alertWithMessageText:@""
+                                     defaultButton:nil
+                                   alternateButton:nil
+                                       otherButton:nil
+                         informativeTextWithFormat:@""];
+    
+    NSScrollView *scrollview = [[NSScrollView alloc] initWithFrame:[[alert.window contentView] bounds]];
+    [scrollview setHasVerticalScroller:YES];
+    NSTextView *textview = [[NSTextView alloc] initWithFrame:[[alert.window contentView] bounds]];
+    [scrollview setDocumentView:textview];
+    [textview setString:str];
+    [alert setAccessoryView:scrollview];
+    
+    [alert runModal];
 }
 
 - (void)convertUnicodeInConsoleAction

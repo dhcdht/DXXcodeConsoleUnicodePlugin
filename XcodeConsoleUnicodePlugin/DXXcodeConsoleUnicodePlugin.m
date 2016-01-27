@@ -190,7 +190,7 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
   
   //    [pasteboard setString:str forType:NSStringPboardType];
   
-    if ([str length]) {
+    if (![str length]) {
         str = originString;
     }
     

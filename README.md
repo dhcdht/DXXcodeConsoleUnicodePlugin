@@ -1,8 +1,9 @@
 DXXcodeConsoleUnicodePlugin
 ===========================
 
-## Plugins upgrade for new Xcode
-[升级Xcode插件的python脚本](https://gist.github.com/dhcdht/7bd794314972855dc4b5)
+~~## Plugins upgrade for new Xcode
+[升级Xcode插件的python脚本](https://gist.github.com/dhcdht/7bd794314972855dc4b5)~~
+## 可以使用 https://github.com/inket/update_xcode_plugins 升级支持 xcode8
 
 转换 Xcode 控制台中一些不可阅读的字符。
 

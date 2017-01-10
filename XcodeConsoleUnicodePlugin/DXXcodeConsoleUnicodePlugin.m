@@ -226,7 +226,7 @@ IMP ReplaceInstanceMethod(Class sourceClass, SEL sourceSel, Class destinationCla
 
 + (NSString*)convertUnicode:(NSString*)aString
 {
-    NSString *ret = [aString replace:RX(@"\\\\[uU]\\w{4}")
+    NSString *ret = [aString replace:RX(@"\\\\?\\\\[uU]\\w{4}")
                            withBlock:^NSString *(NSString *match) {
                                NSString *str = [NSString stringWithCString:[match cStringUsingEncoding:NSUTF8StringEncoding]
                                                                   encoding:NSNonLossyASCIIStringEncoding];

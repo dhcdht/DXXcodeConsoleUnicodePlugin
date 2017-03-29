@@ -23,7 +23,7 @@ static DXXcodeConsoleUnicodePlugin *sharedPlugin;
 static IMP IMP_IDEConsoleItem_initWithAdaptorType = nil;
 @implementation XcodeConsoleUnicode_IDEConsoleItem
 
-- (id)initWithAdaptorType:(id)arg1 content:(id)arg2 kind:(int)arg3
+- (id)initWithAdaptorType:(__unsafe_unretained id)arg1 content:(__unsafe_unretained id)arg2 kind:(int)arg3
 {
     id item = IMP_IDEConsoleItem_initWithAdaptorType(self, _cmd, arg1, arg2, arg3);
 
